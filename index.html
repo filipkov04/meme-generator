@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibecode | AI-Powered App Creation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="loader-content">
+            <div class="loader-brand">import <span>brothers</span></div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar" id="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">Vibecode</div>
+        <a class="cta" href="#get-started">Get Started</a>
+      </nav>
+      <div class="hero-content">
+        <p class="eyebrow">AI-native app studio</p>
+        <h1>Ship native apps from a single prompt.</h1>
+        <p class="lead">
+          Vibecode lets anyone describe their idea in plain English and generate,
+          test, and deploy production-ready mobile apps in under a minute.
+        </p>
+        <div class="hero-actions">
+          <a class="cta primary" href="#pricing">Try for free</a>
+          <a class="cta ghost" href="#platform">See how it works</a>
+        </div>
+        <ul class="pillars">
+          <li>No code required</li>
+          <li>Instant deployment</li>
+          <li>Scales to 100+ users</li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <div class="screen">
+          <p>“Build me a wellness tracker with streaks.”</p>
+          <div class="screen-output">
+            <span>✔ Generated UI</span>
+            <span>✔ Device preview</span>
+            <span>✔ App Store-ready build</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="platform">
+      <div class="section-heading">
+        <p class="eyebrow">Platform</p>
+        <h2>Everything you need to go from idea to App Store.</h2>
+      </div>
+      <div class="grid grid-3">
+        <article>
+          <h3>AI prompt-to-app</h3>
+          <p>
+            Describe your product, choose a template, and let Vibecode assemble the
+            UI, logic, and native build artifacts automatically.
+          </p>
+        </article>
+        <article>
+          <h3>Live device testing</h3>
+          <p>
+            Preview apps instantly on web or native simulators, tweak flows, and
+            publish test builds in seconds.
+          </p>
+        </article>
+        <article>
+          <h3>One-click deployment</h3>
+          <p>
+            Push to the App Store or share a hosted link. Infrastructure scales to
+            100 concurrent users so you can validate fast.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section highlight">
+      <div class="section-heading">
+        <p class="eyebrow">Why Vibecode</p>
+        <h2>Minutes, not months.</h2>
+      </div>
+      <div class="grid grid-2">
+        <ul class="list">
+          <li>AI converts natural language into production-ready code.</li>
+          <li>Hosted infrastructure, monitoring, and auth out of the box.</li>
+          <li>Export builds or keep iterating inside Vibecode’s studio.</li>
+        </ul>
+        <div class="stat-card">
+          <span class="stat-label">Deploy time</span>
+          <span class="stat-value"> &lt; 60 sec</span>
+          <p>Go from concept to live app during a coffee break.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="section-heading">
+        <p class="eyebrow">Pricing</p>
+        <h2>Flexible plans that scale with your launch.</h2>
+      </div>
+      <div class="grid grid-4">
+        <article class="plan">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <p>Basics + $2.50 credits</p>
+          <a class="cta ghost" href="#get-started">Start here</a>
+        </article>
+        <article class="plan">
+          <h3>Plus</h3>
+          <p class="price">$20/mo</p>
+          <p>Prototype with $30 credits</p>
+          <a class="cta ghost" href="#get-started">Choose Plus</a>
+        </article>
+        <article class="plan">
+          <h3>Pro</h3>
+          <p class="price">$50/mo</p>
+          <p>Ship to stores, $100 credits</p>
+          <a class="cta ghost" href="#get-started">Upgrade</a>
+        </article>
+        <article class="plan">
+          <h3>Max</h3>
+          <p class="price">$200/mo</p>
+          <p>Advanced apps, $500 credits</p>
+          <a class="cta ghost" href="#get-started">Scale up</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="get-started">
+      <div class="cta-panel">
+        <div>
+          <p class="eyebrow">Launch today</p>
+          <h2>Join builders shipping with Vibecode.</h2>
+          <p>
+            Founded in San Francisco in 2025 with backing from First Harmonic and
+            Seven Seven Six, Vibecode is reinventing how native software is made.
+          </p>
+        </div>
+        <a class="cta primary" href="mailto:support@vibecodeapp.com">Talk to us</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2025 Vibecode Inc. All rights reserved.</p>
+      <a href="https://www.vibecodeapp.com" target="_blank">vibecodeapp.com</a>
+    </footer>
+
+    <script>
+        // Loading Overlay Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const loader = document.getElementById('loading-overlay');
+            const progressBar = document.getElementById('loader-progress');
+            
+            // Simulate progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress > 90) progress = 90; // Wait for real load to finish 100%
+                progressBar.style.width = progress + '%';
+            }, 200);
+            
+            // When page is fully loaded
+            window.addEventListener('load', function() {
+                clearInterval(interval);
+                progressBar.style.width = '100%';
+                
+                // Add a small delay to let the user see the 100% state and the brand name
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    // Remove from DOM after transition to avoid blocking clicks
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 500);
+                }, 800); // 0.8s delay before hiding
+            });
+        });
+    </script>
+  </body>
+</html>
+
+
+

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator - Import Brothers Style</title>
+    <link rel="stylesheet" href="meme-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div id="loading-overlay">
+        <div class="loader-content">
+            <div class="loader-brand">import <span>brothers</span></div>
+            <div class="loader-progress-container">
+                <div class="loader-progress-bar" id="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span>import brothers</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Fulfillment</a>
+            <a href="#">Benefits</a>
+            <a href="#">Changelog</a>
+            <a href="#">Partners</a>
+            <a href="#">FAQs</a>
+            <a href="#">Jobs</a>
+            <a href="#">Contact</a>
+        </div>
+        <a href="#" class="nav-cta">Become a Partner</a>
+    </nav>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="auth-modal">
+        <div class="auth-container">
+            <div class="auth-header">
+                <h2>Welcome to Meme Generator</h2>
+                <p>Create an account to get started</p>
+            </div>
+            
+            <div id="auth-tabs" class="auth-tabs">
+                <button class="auth-tab active" data-tab="signup">Sign Up</button>
+                <button class="auth-tab" data-tab="login">Login</button>
+            </div>
+
+            <!-- Sign Up Form -->
+            <form id="signup-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" required placeholder="Enter your email" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" required placeholder="Enter your password" />
+                    <div class="password-requirements">
+                        <small>Password must contain:</small>
+                        <ul>
+                            <li id="req-length">Minimum 12 characters</li>
+                            <li id="req-capital">At least 1 capital letter</li>
+                            <li id="req-special">At least 1 special character</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signup-confirm">Confirm Password</label>
+                    <input type="password" id="signup-confirm" required placeholder="Confirm your password" />
+                    <small id="password-match" class="error-message" style="display: none;">Passwords do not match</small>
+                </div>
+                
+                <button type="submit" class="btn btn-auth">Create Account</button>
+                <div id="signup-error" class="error-message" style="display: none;"></div>
+            </form>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" required placeholder="Enter your email" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required placeholder="Enter your password" />
+                </div>
+                
+                <button type="submit" class="btn btn-auth">Login</button>
+                <div id="login-error" class="error-message" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container" id="main-container" style="display: none;">
+        <header>
+            <h1>Help Brands Scale.<br>Create Memes Forever.</h1>
+            <p>Refer once. Earn forever. Our meme program offers generous lifetime laughs for every brand you successfully meme.</p>
+            <div style="display: flex; gap: 16px; margin-top: 24px;">
+                <button class="btn btn-primary" style="border-radius: 6px; padding: 12px 24px;">Start Creating</button>
+                <button class="btn" style="background: white; color: black; border-radius: 6px; padding: 12px 24px;">Learn more</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="controls-panel">
+                <div class="templates-section">
+                    <h3>Template Images</h3>
+                    <div id="templates-grid" class="templates-grid"></div>
+                </div>
+                
+                <div class="control-group">
+                    <label for="image-upload" class="upload-label">
+                        Upload Your Own Image
+                    </label>
+                    <input type="file" id="image-upload" accept="image/*" />
+                </div>
+
+                <div class="control-group">
+                    <button id="add-text-btn" class="btn btn-primary">Add Text</button>
+                </div>
+
+                <div class="control-group">
+                    <label for="font-size">Font Size: <span id="font-size-value">40</span>px</label>
+                    <input type="range" id="font-size" min="20" max="100" value="40" />
+                </div>
+
+                <div class="control-group">
+                    <label for="text-color">Text Color</label>
+                    <input type="color" id="text-color" value="#ffffff" />
+                </div>
+
+                <div class="control-group">
+                    <label for="font-family">Font Family</label>
+                    <select id="font-family">
+                        <option value="Arial">Arial</option>
+                        <option value="Impact" selected>Impact</option>
+                        <option value="Comic Sans MS">Comic Sans MS</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Verdana">Verdana</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Trebuchet MS">Trebuchet MS</option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Tahoma">Tahoma</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <button id="download-btn" class="btn btn-download">Download Meme</button>
+                </div>
+
+                <div class="audio-section">
+                    <h3>Audio Recording</h3>
+                    
+                    <div class="mic-test-section">
+                        <div class="control-group">
+                            <label for="microphone-select">Microphone</label>
+                            <select id="microphone-select">
+                                <option value="">Select microphone...</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="volume-threshold">Volume Threshold: <span id="threshold-value">50</span>%</label>
+                            <input type="range" id="volume-threshold" min="0" max="100" value="50" />
+                        </div>
+                        <button id="test-mic-btn" class="btn btn-test-mic">
+                            <span>🎙️</span>
+                            <span id="test-mic-text">Test Microphone</span>
+                        </button>
+                        <div class="volume-meter-container">
+                            <div class="volume-meter-label">Volume Level</div>
+                            <div class="volume-meter">
+                                <div id="volume-bar" class="volume-bar"></div>
+                                <div id="threshold-indicator" class="threshold-indicator"></div>
+                            </div>
+                            <div class="volume-value" id="volume-value">0%</div>
+                        </div>
+                    </div>
+
+                    <div class="audio-controls">
+                        <button id="record-btn" class="btn btn-record">
+                            <span id="record-icon">🎤</span>
+                            <span id="record-text">Start Recording</span>
+                        </button>
+                        <button id="stop-record-btn" class="btn btn-stop" disabled>
+                            <span>⏹</span>
+                            <span>Stop</span>
+                        </button>
+                        <button id="play-audio-btn" class="btn btn-play" disabled>
+                            <span>▶</span>
+                            <span>Play</span>
+                        </button>
+                        <button id="download-audio-btn" class="btn btn-download-audio" disabled>
+                            <span>⬇</span>
+                            <span>Download</span>
+                        </button>
+                    </div>
+                    <div class="audio-visualizer">
+                        <canvas id="audio-canvas"></canvas>
+                        <div id="recording-indicator" class="recording-indicator">
+                            <span class="pulse-dot"></span>
+                            <span>Recording...</span>
+                        </div>
+                        <div id="audio-status" class="audio-status">Ready to record</div>
+                    </div>
+                    <audio id="audio-player" controls style="display: none;"></audio>
+                </div>
+
+                <div class="chatgpt-section">
+                    <h3>ChatGPT Integration</h3>
+                    <div class="control-group">
+                        <label for="api-key-input">OpenAI API Key</label>
+                        <input type="password" id="api-key-input" placeholder="Enter your OpenAI API key..." />
+                        <small class="api-key-hint">Your API key is stored locally and never sent to our servers</small>
+                    </div>
+                    <div class="control-group">
+                        <label for="chat-input">Ask ChatGPT</label>
+                        <textarea id="chat-input" rows="4" placeholder="Type your message here..."></textarea>
+                    </div>
+                    <button id="send-chat-btn" class="btn btn-chat">
+                        <span>💬</span>
+                        <span>Send Message</span>
+                    </button>
+                    <div class="chat-response-container">
+                        <div class="chat-response-label">Response:</div>
+                        <div id="chat-response" class="chat-response">
+                            <p class="chat-placeholder">Enter your API key and send a message to get started</p>
+                        </div>
+                        <button id="copy-response-btn" class="btn btn-copy" style="display: none;">
+                            <span>📋</span>
+                            <span>Copy Response</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-boxes-container">
+                    <h3>Text Boxes</h3>
+                    <div id="text-boxes-list"></div>
+                </div>
+
+                <div class="control-group" style="margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                    <button id="logout-btn" class="btn" style="width: 100%; background: transparent; border: 1px solid var(--border-color); color: var(--text-secondary);">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+
+            <div class="canvas-panel">
+                <canvas id="meme-canvas"></canvas>
+                <p class="canvas-hint" id="canvas-hint">Upload an image to get started</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="auth.js"></script>
+    <script src="meme-generator.js"></script>
+</body>
+</html>
+
