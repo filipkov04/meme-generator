@@ -28,8 +28,9 @@ export default function UpvoteButton({ memeId, initialCount }: UpvoteButtonProps
     if (data?.upvotes) {
       setUpvoteCount(data.upvotes.length);
       if (auth?.user) {
+        const userId = auth.user.id;
         const hasUpvoted = data.upvotes.some(
-          (u: any) => u.userId === auth.user.id
+          (u: any) => u.userId === userId
         );
         setUpvoted(hasUpvoted);
       }
@@ -42,11 +43,13 @@ export default function UpvoteButton({ memeId, initialCount }: UpvoteButtonProps
       return;
     }
 
+    const userId = auth.user.id;
+
     try {
       if (upvoted) {
         // Remove upvote
         const existingUpvote = data?.upvotes?.find(
-          (u: any) => u.memeId === memeId && u.userId === auth.user.id
+          (u: any) => u.memeId === memeId && u.userId === userId
         );
         if (existingUpvote) {
           await db.transact(db.tx.upvotes[existingUpvote.id].delete());
@@ -57,7 +60,7 @@ export default function UpvoteButton({ memeId, initialCount }: UpvoteButtonProps
         await db.transact(
           db.tx.upvotes[upvoteId].update({
             memeId,
-            userId: auth.user.id,
+            userId: userId,
             createdAt: Date.now(),
           })
         );
