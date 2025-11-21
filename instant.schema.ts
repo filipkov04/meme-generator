@@ -15,6 +15,8 @@ const schema = i.schema({
       createdAt: i.number(),
     }),
   },
+  links: {},
+  rooms: {},
 });
 
 export default schema;
